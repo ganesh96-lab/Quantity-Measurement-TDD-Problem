@@ -40,4 +40,11 @@ public class QuantityTest {
         Feet feet2 = new Feet(1.0);
         Assert.assertEquals(feet2,feet2);
     }
+
+    @Test
+    public void given0InchAnd0Inch_shouldReturnEqual() {
+        Inch inch1=new Inch(0.0);
+        Inch inch2=new Inch(0.0);
+        Assert.assertEquals(inch1,inch2);
+    }
 }
