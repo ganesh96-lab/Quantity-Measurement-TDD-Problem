@@ -15,4 +15,10 @@ public class QuantityTest {
         Assert.assertNotEquals(null,feet2);
     }
 
+    @Test
+    public void givenTwoDiffReferences_shouldReturnNotSame() {
+        Feet feet1=new Feet(0.0);
+        Feet feet2 = new Feet(0.0);
+        Assert.assertNotSame(feet1,feet2);
+    }
 }
