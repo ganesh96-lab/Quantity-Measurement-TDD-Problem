@@ -8,4 +8,11 @@ public class QuantityTest {
         Feet feet2 = new Feet(0.0);
         Assert.assertEquals(feet1,feet2);
     }
+
+    @Test
+    public void givenNullAsObject_shouldReturnFalse() {
+        Feet feet2 = new Feet(0.0);
+        Assert.assertNotEquals(null,feet2);
+    }
+
 }
