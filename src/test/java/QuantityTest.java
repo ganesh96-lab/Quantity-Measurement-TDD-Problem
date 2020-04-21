@@ -27,4 +27,12 @@ public class QuantityTest {
         Feet feet2 = new Feet(0.0);
         Assert.assertNotEquals("String",feet2);
     }
+
+    @Test
+    public void given0FeetAnd1Feet_shouldReturnNotEqual() {
+        Feet feet1=new Feet(0.0);
+        Feet feet2 = new Feet(1.0);
+        Assert.assertNotEquals(feet1,feet2);
+
+    }
 }
