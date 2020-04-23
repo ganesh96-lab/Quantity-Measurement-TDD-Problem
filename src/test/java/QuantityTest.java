@@ -140,4 +140,12 @@ public class QuantityTest {
         boolean compareValue=Unit.compare(inch,yard);
         Assert.assertFalse(compareValue);
     }
+
+    @Test
+    public void given1YardAnd36Inch_shouldReturnEqual() {
+        Length yard=new Length(Unit.YARD,1);
+        Length inch=new Length(Unit.INCH,36);
+        boolean compareValue=Unit.compare(yard,inch);
+        Assert.assertTrue(compareValue);
+    }
 }
