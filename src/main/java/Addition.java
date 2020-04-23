@@ -1,6 +1,6 @@
 public class Addition {
-    public static double add(Length length1,Length length2){
-               return length1.value*length1.unit.baseUnitConversion+
-                       length2.value*length2.unit.baseUnitConversion;
+    public static double add(Quantity quantity1, Quantity quantity2){
+               return quantity1.value* quantity1.unit.baseUnitConversion+
+                       quantity2.value* quantity2.unit.baseUnitConversion;
     }
 }
