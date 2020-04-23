@@ -4,7 +4,6 @@ public class QuantityException extends Exception {
     };
     ExceptionType type;
     public QuantityException(ExceptionType type,String message){
-        super(message);
         this.type=type;
     }
 }

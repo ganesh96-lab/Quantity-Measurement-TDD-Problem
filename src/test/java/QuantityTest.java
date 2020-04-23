@@ -211,4 +211,17 @@ public class QuantityTest {
         boolean compareVolume=Unit.compare(gallon,liter);
         Assert.assertTrue(compareVolume);
     }
+
+    @Test
+    public void givenDiffQuantity_shouldThrowException() {
+        Quantity gallon=new Quantity(Unit.GALLON,1);
+        Quantity cm=new Quantity(Unit.CM,3.78);
+        boolean compareVolume= false;
+        try {
+            compareVolume = Unit.compare(gallon,cm);
+            Assert.assertTrue(compareVolume);
+        } catch (QuantityException e) {
+            Assert.assertEquals(QuantityException.ExceptionType.INVALID_QUANTITY_COMPARE,e.type);
+        }
+    }
 }
