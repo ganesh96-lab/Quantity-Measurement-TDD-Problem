@@ -256,4 +256,12 @@ public class QuantityTest {
         boolean compareMass=Unit.compare(kg,grams);
         Assert.assertTrue(compareMass);
     }
+
+    @Test
+    public void given1TonneAnd1000Kg_shouldReturnEqual() throws QuantityException {
+        Quantity tonne=new Quantity(Unit.TUNNE,1);
+        Quantity kg=new Quantity(Unit.KG,1000);
+        Boolean compareMass=Unit.compare(tonne,kg);
+        Assert.assertTrue(compareMass);
+    }
 }
