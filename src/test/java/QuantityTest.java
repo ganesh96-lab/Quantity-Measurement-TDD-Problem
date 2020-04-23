@@ -248,4 +248,12 @@ public class QuantityTest {
         Double addition=Addition.add(liter,ml);
         Assert.assertEquals(2,addition,0.0);
     }
+
+    @Test
+    public void given1KgAnd1000Grams_shouldReturnEqual() throws QuantityException {
+        Quantity kg=new Quantity(Unit.KG,1);
+        Quantity grams=new Quantity(Unit.GRAMS,1000);
+        boolean compareMass=Unit.compare(kg,grams);
+        Assert.assertTrue(compareMass);
+    }
 }
