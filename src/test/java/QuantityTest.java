@@ -240,4 +240,12 @@ public class QuantityTest {
         Double addition=Addition.add(gallon,liter);
         Assert.assertEquals(7.57,addition,0.2);
     }
+
+    @Test
+    public void givenSumOf1LiterAnd1000Ml_shouldEqualTo2Liters() {
+        Quantity liter=new Quantity(Unit.LITER,1);
+        Quantity ml=new Quantity(Unit.ML,1000);
+        Double addition=Addition.add(liter,ml);
+        Assert.assertEquals(2,addition,0.0);
+    }
 }
