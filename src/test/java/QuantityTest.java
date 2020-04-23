@@ -232,4 +232,12 @@ public class QuantityTest {
         boolean compareVolume=Unit.compare(liter,ml);
         Assert.assertTrue(compareVolume);
     }
+
+    @Test
+    public void givenSumOf1GallonAnd3_78Liter_shouldEqualTo7_57Liters() {
+        Quantity gallon=new Quantity(Unit.GALLON,1.0);
+        Quantity liter=new Quantity(Unit.LITER,3.78);
+        Double addition=Addition.add(gallon,liter);
+        Assert.assertEquals(7.57,addition,0.2);
+    }
 }
