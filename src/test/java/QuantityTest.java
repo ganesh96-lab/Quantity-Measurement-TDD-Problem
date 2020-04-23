@@ -224,4 +224,12 @@ public class QuantityTest {
             Assert.assertEquals(QuantityException.ExceptionType.INVALID_QUANTITY_COMPARE,e.type);
         }
     }
+
+    @Test
+    public void given1LiterAnd1000MlEqual_shouldReturnTrue() throws QuantityException {
+        Quantity liter=new Quantity(Unit.LITER,1);
+        Quantity ml=new Quantity(Unit.ML,1000);
+        boolean compareVolume=Unit.compare(liter,ml);
+        Assert.assertTrue(compareVolume);
+    }
 }
