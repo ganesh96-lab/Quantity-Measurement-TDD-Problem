@@ -272,4 +272,12 @@ public class QuantityTest {
         Double addition=Addition.add(tonne,grams);
         Assert.assertEquals(1001,addition,0.0);
     }
+
+    @Test
+    public void given212FahrenheitEqualTo100Celsius_shouldReturnTrue() throws QuantityException {
+        Quantity fahrenheit=new Quantity(Unit.FAHRENHEIT,212);
+        Quantity celsius=new Quantity(Unit.CELSIUS,100);
+        Boolean compareTemp=Unit.compare(fahrenheit,celsius);
+        Assert.assertTrue(compareTemp);
+    }
 }

@@ -2,8 +2,8 @@ public enum Unit {
     FEET(12.0,"length"),INCH(1.0,"length"),
     YARD(36.0,"length"),CM(0.4,"length"),
     ML(0.001,"volume"),LITER(1,"volume"),GALLON(3.780,"volume"),
-    KG(1.0,"mass"),GRAMS(0.001,"mass"),TUNNE(1000,"mass");
-
+    KG(1.0,"mass"),GRAMS(0.001,"mass"),TUNNE(1000,"mass"),
+    FAHRENHEIT(1,"temperature"),CELSIUS(2.12,"temperature");
     double baseUnitConversion;
     String quantityType;
 
