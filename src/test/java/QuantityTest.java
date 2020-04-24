@@ -173,7 +173,7 @@ public class QuantityTest {
     }
 
     @Test
-    public void givenSumOf2InchAnd2InchEqualto4Inch_shouldReturnTrue() {
+    public void givenSumOf2InchAnd2InchEqualto4Inch_shouldReturnTrue() throws QuantityException {
         Quantity inch1=new Quantity(Unit.INCH,2.0);
         Quantity inch2=new Quantity(Unit.INCH,2.0);
         Double addition=Addition.add(inch1,inch2);
@@ -181,7 +181,7 @@ public class QuantityTest {
     }
 
     @Test
-    public void givenSumOf1FeetAnd2InchEqualto14Inch_shouldReturnTrue(){
+    public void givenSumOf1FeetAnd2InchEqualto14Inch_shouldReturnTrue() throws QuantityException {
         Quantity feet=new Quantity(Unit.FEET,1);
         Quantity inch=new Quantity(Unit.INCH,2);
         Double addition=Addition.add(feet,inch);
@@ -189,7 +189,7 @@ public class QuantityTest {
     }
 
     @Test
-    public void givenSumOf1FeetAnd1FeetEqualTo24Inch_shouldReturnTrue(){
+    public void givenSumOf1FeetAnd1FeetEqualTo24Inch_shouldReturnTrue() throws QuantityException {
         Quantity feet1=new Quantity(Unit.FEET,1);
         Quantity feet2=new Quantity(Unit.FEET,1);
         Double addition=Addition.add(feet1,feet2);
@@ -234,7 +234,7 @@ public class QuantityTest {
     }
 
     @Test
-    public void givenSumOf1GallonAnd3_78Liter_shouldEqualTo7_57Liters() {
+    public void givenSumOf1GallonAnd3_78Liter_shouldEqualTo7_57Liters() throws QuantityException {
         Quantity gallon=new Quantity(Unit.GALLON,1.0);
         Quantity liter=new Quantity(Unit.LITER,3.78);
         Double addition=Addition.add(gallon,liter);
@@ -242,7 +242,7 @@ public class QuantityTest {
     }
 
     @Test
-    public void givenSumOf1LiterAnd1000Ml_shouldEqualTo2Liters() {
+    public void givenSumOf1LiterAnd1000Ml_shouldEqualTo2Liters() throws QuantityException {
         Quantity liter=new Quantity(Unit.LITER,1);
         Quantity ml=new Quantity(Unit.ML,1000);
         Double addition=Addition.add(liter,ml);
@@ -266,7 +266,7 @@ public class QuantityTest {
     }
 
     @Test
-    public void givenSumOf1TonneAnd1000Gm_shouldEqualTo1001Kg() {
+    public void givenSumOf1TonneAnd1000Gm_shouldEqualTo1001Kg() throws QuantityException {
         Quantity tonne=new Quantity(Unit.TUNNE,1);
         Quantity grams=new Quantity(Unit.GRAMS,1000);
         Double addition=Addition.add(tonne,grams);
@@ -279,5 +279,18 @@ public class QuantityTest {
         Quantity celsius=new Quantity(Unit.CELSIUS,100);
         Boolean compareTemp=Unit.compare(fahrenheit,celsius);
         Assert.assertTrue(compareTemp);
+    }
+
+    @Test
+    public void givenQuantityValueIsNegative_shouldThrowQuantityException() throws QuantityException {
+        Quantity tonne=new Quantity(Unit.TUNNE,1);
+        Quantity grams=new Quantity(Unit.GRAMS,-1000);
+        try {
+            Double addition=Addition.add(tonne,grams);
+            Assert.assertEquals(1001,addition,0.0);
+        }catch (QuantityException e){
+            Assert.assertEquals("value can not negative",e.getMessage());
+        }
+
     }
 }
