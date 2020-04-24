@@ -282,7 +282,7 @@ public class QuantityTest {
     }
 
     @Test
-    public void givenQuantityValueIsNegative_shouldThrowQuantityException() throws QuantityException {
+    public void givenQuantityValueIsNegative_shouldThrowException() throws QuantityException {
         Quantity tonne=new Quantity(Unit.TUNNE,1);
         Quantity grams=new Quantity(Unit.GRAMS,-1000);
         try {
@@ -291,6 +291,17 @@ public class QuantityTest {
         }catch (QuantityException e){
             Assert.assertEquals("value can not negative",e.getMessage());
         }
+    }
 
+    @Test
+    public void givenAdditionOfTemp_shouldThrowException() throws QuantityException {
+        Quantity fahrenheit=new Quantity(Unit.FAHRENHEIT,212);
+        Quantity celsius=new Quantity(Unit.FAHRENHEIT,100);
+        try {
+            Addition.add(fahrenheit,celsius);
+        }catch (QuantityException e){
+            e.printStackTrace();
+            Assert.assertEquals(QuantityException.ExceptionType.TEMP_NOT_ADDED,e.type);
+        }
     }
 }
