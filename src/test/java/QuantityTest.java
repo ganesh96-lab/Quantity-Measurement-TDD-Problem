@@ -2,7 +2,6 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class QuantityTest {
-
     @Test
     public void given0FeetAnd0Feet_shouldReturnEqual() {
         Quantity feet1=new Quantity(Unit.FEET,0.0);
@@ -17,7 +16,7 @@ public class QuantityTest {
     }
 
     @Test
-    public void givenTwoDiffReferences_shouldNotSame() {
+    public void givenTwoDiffReferencesAndSameValue_shouldNotSame() {
         Quantity feet1=new Quantity(Unit.FEET,0.0);
         Quantity feet2 = new Quantity(Unit.FEET,0.0);
         Assert.assertNotSame(feet1,feet2);
@@ -172,36 +171,37 @@ public class QuantityTest {
         Assert.assertTrue(compareValue);
     }
 
+
     @Test
     public void givenSumOf2InchAnd2InchEqualto4Inch_shouldReturnTrue() throws QuantityException {
         Quantity inch1=new Quantity(Unit.INCH,2.0);
         Quantity inch2=new Quantity(Unit.INCH,2.0);
-        Double addition=Addition.add(inch1,inch2);
-        Assert.assertEquals(4.0,addition,0.0);
+        Quantity actualAddition=Addition.add(inch1,inch2);
+        Assert.assertEquals(new Quantity(Unit.INCH,4.0),actualAddition);
     }
 
     @Test
     public void givenSumOf1FeetAnd2InchEqualto14Inch_shouldReturnTrue() throws QuantityException {
         Quantity feet=new Quantity(Unit.FEET,1);
         Quantity inch=new Quantity(Unit.INCH,2);
-        Double addition=Addition.add(feet,inch);
-        Assert.assertEquals(14,addition,0.0);
+        Quantity actualAddition=Addition.add(feet,inch);
+        Assert.assertEquals(new Quantity(Unit.INCH,14),actualAddition);
     }
 
     @Test
     public void givenSumOf1FeetAnd1FeetEqualTo24Inch_shouldReturnTrue() throws QuantityException {
         Quantity feet1=new Quantity(Unit.FEET,1);
         Quantity feet2=new Quantity(Unit.FEET,1);
-        Double addition=Addition.add(feet1,feet2);
-        Assert.assertEquals(24,addition,0.0);
+        Quantity addition=Addition.add(feet1,feet2);
+        Assert.assertEquals(new Quantity(Unit.INCH,24),addition);
     }
 
     @Test
     public void givenSumOf2InchAnd25CmEqualTo3Inch() throws QuantityException {
         Quantity inch=new Quantity(Unit.INCH,2);
         Quantity cm=new Quantity(Unit.CM,2.5);
-        Double addition=Addition.add(inch,cm);
-        Assert.assertEquals(3,addition,0.0);
+        Quantity addition=Addition.add(inch,cm);
+        Assert.assertEquals(new Quantity(Unit.INCH,3),addition);
     }
 
     @Test
@@ -237,16 +237,16 @@ public class QuantityTest {
     public void givenSumOf1GallonAnd3_78Liter_shouldEqualTo7_57Liters() throws QuantityException {
         Quantity gallon=new Quantity(Unit.GALLON,1.0);
         Quantity liter=new Quantity(Unit.LITER,3.78);
-        Double addition=Addition.add(gallon,liter);
-        Assert.assertEquals(7.57,addition,0.2);
+        Quantity actualAddition=Addition.add(gallon,liter);
+        Assert.assertEquals(new Quantity(Unit.LITER,7.57),actualAddition);
     }
 
     @Test
     public void givenSumOf1LiterAnd1000Ml_shouldEqualTo2Liters() throws QuantityException {
         Quantity liter=new Quantity(Unit.LITER,1);
         Quantity ml=new Quantity(Unit.ML,1000);
-        Double addition=Addition.add(liter,ml);
-        Assert.assertEquals(2,addition,0.0);
+        Quantity actualAddition=Addition.add(liter,ml);
+        Assert.assertEquals(new Quantity(Unit.LITER,2),actualAddition);
     }
 
     @Test
@@ -265,12 +265,13 @@ public class QuantityTest {
         Assert.assertTrue(compareMass);
     }
 
+
     @Test
     public void givenSumOf1TonneAnd1000Gm_shouldEqualTo1001Kg() throws QuantityException {
         Quantity tonne=new Quantity(Unit.TUNNE,1);
         Quantity grams=new Quantity(Unit.GRAMS,1000);
-        Double addition=Addition.add(tonne,grams);
-        Assert.assertEquals(1001,addition,0.0);
+        Quantity actualAddition=Addition.add(tonne,grams);
+        Assert.assertEquals(new Quantity(Unit.KG,1001),actualAddition);
     }
 
     @Test
@@ -286,8 +287,8 @@ public class QuantityTest {
         Quantity tonne=new Quantity(Unit.TUNNE,1);
         Quantity grams=new Quantity(Unit.GRAMS,-1000);
         try {
-            Double addition=Addition.add(tonne,grams);
-            Assert.assertEquals(1001,addition,0.0);
+            Quantity addition=Addition.add(tonne,grams);
+            Assert.assertEquals(new Quantity(Unit.KG,1001),addition);
         }catch (QuantityException e){
             Assert.assertEquals("value can not negative",e.getMessage());
         }

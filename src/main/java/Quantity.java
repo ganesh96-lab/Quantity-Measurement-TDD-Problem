@@ -7,6 +7,18 @@ public class Quantity {
         this.unit=unit;
     }
 
+    public static Quantity getObject(String quantityType, double additionOfQuantity) {
+        if (quantityType.equals("length"))
+        {
+            return new Quantity(Unit.INCH,additionOfQuantity);
+        }
+        else if(quantityType.equals("volume"))
+        {
+            return new Quantity(Unit.LITER,additionOfQuantity);
+        }
+        return new Quantity(Unit.KG,additionOfQuantity);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

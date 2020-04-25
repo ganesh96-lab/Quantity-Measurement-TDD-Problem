@@ -4,6 +4,7 @@ public enum Unit {
     ML(0.001,"volume"),LITER(1,"volume"),GALLON(3.780,"volume"),
     KG(1.0,"mass"),GRAMS(0.001,"mass"),TUNNE(1000,"mass"),
     FAHRENHEIT(1,"temperature"),CELSIUS(2.12,"temperature");
+
     double baseUnitConversion;
     String quantityType;
 
